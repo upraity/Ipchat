@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewpor" content="width=device-width, initial-scale=1.0">
+  <title>IPChat</title>
+  <style type="text/css">
+    * {
+      background-color: ;
+      margin-right: 10px;
+    }
+
+    .chatbox {
+      /*margin: 15px;
+      padding-left: 0px;
+      border: 2 px solid black;*/
+      margin-top: 200px;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      overflow-y: scroll;
+      position: fixed;
+    }
+
+    .box {
+      position: ;
+      /* background-color: #3B444B;*/
+    }
+
+    .header {
+      width: 100%;
+      height: 215px;
+      position: ;
+      background-color: #4E5056;
+      margin-top: -8px;
+      margin-left: -8px;
+    }
+
+    .details {
+      position: relative;
+      width: 100%;
+      font-size: 58px;
+      margin-left: 280px;
+      margin-top: -239px;
+      height: 215px;
+      background-color: #4E5056;
+    }
+
+    .details .listHead {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .time {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-left: 600px;
+      position: fixed;
+    }
+
+    .listHead h4 {
+      margin-top: 70px;
+      margin-left: -100px;
+    }
+
+    .header img {
+      height: 250px;
+      width: 250px;
+      margin-left: 75px;
+      margin-top: -15px
+    }
+
+    .frame1 {
+      visibility: hidden;
+    }
+
+    .frame1 .info {
+      font-size: 28px;
+      color: white;
+      border-bottom: 1px solid white;
+      padding-top: 7px;
+      cursor: pointer;
+
+    }
+
+    .frame1 .info:hover {
+      background-color: #363333;
+
+    }
+
+    .frame1 .info span {
+      margin-left: 10px;
+    }
+
+    .style {
+      width: 190px;
+      height: 161px;
+      background-color: #111;
+      margin-right: -200px;
+      margin-left: 40px;
+      border-radius: 10px;
+    }
+
+    .dotted a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .listHead .arrow button {
+      font-size: 68px;
+      margin-top: 70px;
+      margin-left: -270px;
+      background-color: transparent;
+      border: 0px;
+    }
+
+    .underline {
+      margin-left: 290px;
+      margin-bottom: 1000px;
+    }
+
+    .search_chat {
+      position: fixed;
+      /*margin-top:140%;*/
+      width: 100%;
+      height: 170px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      /*cap: 50px;
+      
+      margin-top: 25px;*/
+      background-color: #f6f6f6;
+    }
+
+    .search_chat div {
+      width: 70%;
+      margin-left: -160px;
+      height: 150px;
+    }
+
+    .search_chat div input {
+      width: 80%;
+      outline: none;
+      border: none;
+      background: #fff;
+      padding: 8px;
+      height: 125px;
+      border-radius: 50px;
+      font-size: 45px;
+      padding-left: 50px;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+
+    .search_chat div input::placeholder {
+      color: #bbb;
+      font-size: 45px;
+    }
+
+    .search_chat div ion-icon {
+      position: absolute;
+      left: 20px;
+      top: 50px;
+      font-size: 5em;
+    }
+
+    .search_chat div .icon {
+      position: absolute;
+      left: 900px;
+      top: 50px;
+      font-size: 5em;
+    }
+
+    .search_chat div .add {
+      position: absolute;
+      left: 1058px;
+      top: 50px;
+      font-size: 5em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contanier">
+    <div class="box">
+      <div class="header">
+        <img src="pic/user.png">
+        <div class="details">
+          <div class="listHead">
+            <div class="arrow">
+              <button>
+                <ion-icon name="arrow-back-sharp"></ion-icon>
+              </button>
+            </div>
+            <h4>name</h4>
+            <!--<p class="time">-->
+            <div class="dotted">
+              <div id="toggle" class="group-manue" onclick="fun()">
+                <ion-icon name="ellipsis-vertical" style="font-size: 60px;margin-top: 65px;margin-left:200px;">
+                </ion-icon>
+              </div>
+              <div class="frame1" id="frame1">
+                <div class="info"><span><a href="#">More Info</a></span></div>
+                <div class="info"><span><a href="#">Clear Chat</a></span></div>
+                <div class="info"><span><a href="#">Block</a></span></div>
+                <div class="info"><span><a href="#">Report</a></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<pre><u class="underline">                                                                                                                                        </u></pre>-->
+      </div>
+    </div>
+    <div class="chatbox">
+
+
+    </div>
+  </div>
+  <div class="search_chat">
+    <div>
+      <input type="text" placeholder=" Type here your msg" style="font-size: 50px;bottom:0">
+      <b><b>
+          <ion-icon name="happy-outline"></ion-icon>
+        </b></b>
+      <ion-icon class="icon" name="send"></ion-icon>
+      <b><b>
+          <ion-icon class="add" name="add-sharp"></ion-icon>
+        </b></b>
+    </div>
+  </div>
+
+  <script>
+    function fun() {
+      document.getElementById("frame1").style.visibility = "visible";
+      document.getElementById("frame1").classList.add("style");
+      document.getElementById("toggle").setAttribute('onclick', 'remove()')
+    }
+    function remove() {
+      document.getElementById("frame1").classList.remove("style");
+      document.getElementById("frame1").style.visibility = "hidden"; document.getElementById("toggle").setAttribute('onclick', 'fun()')
+
+    }
+
+    let btnBack = document.querySelector('button');
+    btnBack.addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
