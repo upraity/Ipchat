@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewpor" content="width=device-width, initial-scale=1.0">
+  <title>IPChat</title>
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=open+sans:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'open sans', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 95vh;
+      background: linear-gradient(#4d0096 130px, #d9dbd9 0px);
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      height: 88vh;
+      background: #fff;
+      box-sizing: 0 1px 1px 0 rgba(0, 0, 0, 0, 06), 0 2px 5px 0 rgba(0, 0, 0, 0, 06);
+      display: flex;
+
+    }
+
+    .container .leftSide {
+      position: relativrelative;
+      flex: 50%;
+      height: 100%;
+      background: #fff;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+
+    /*.container .rightSide {
+      position: relative;
+      flex: 70%;
+      background: #e5ddd5;
+    }*/
+
+    .header {
+      position: ;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      background: #ededed;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1;
+    }
+
+    .user img {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+
+    .nav_icon {
+      display: flex;
+      list-style: none;
+      cursor: pointer;
+      color: #51585c;
+      font-size: 2.5em;
+      margin-top: 30px;
+    }
+
+    .search_chat {
+      position: relative;
+      width: 100%;
+      height: 70px;
+      background: #f6f6f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      cap: 50px;
+      margin-top: 25px;
+    }
+
+    .search_chat div {
+      width: 100%;
+      margin-right: 10px;
+    }
+
+    .search_chat div input {
+      width: 100%;
+      outline: none;
+      border: none;
+      background: #fff;
+      padding: 8px;
+      height: 60px;
+      border-radius: 30px;
+      font-size: 14px;
+      padding-left: 90px;
+
+    }
+
+    .search_chat div input::placeholder {
+      color: #bbb;
+    }
+
+    .search_chat div ion-icon {
+      position: absolute;
+      left: 50px;
+      top: 20px;
+      font-size: 28px;
+
+    }
+
+    .chatlist a {
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+    }
+
+    .chatlist {
+      position: relative;
+      height: calc(100% - 110px);
+      overflow: auto;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+
+    .chatlist.block {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+
+    /*.chatlist.block.imgbx img {
+      position: relative;
+      width: 50px;
+      height: 50px;
+    }*/
+    .chatlist .block .imgbx img {
+      position: relative;
+      min-width: 65px;
+      height: 65px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-top: -10px;
+    }
+
+    .d {
+      text-decoration: none;
+      color: #51585c;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .d:hover {
+      overflow: visible;
+    }
+
+    ul li:hover>.udot {
+
+      display: block;
+      line-height: 31px;
+      height: 35px;
+    }
+
+    .icon {
+
+      font-size: 50px;
+      font-weight: bold;
+      margin-left: -7%;
+
+    }
+
+    .icon::selection {
+      color: red;
+      background-color: black;
+    }
+
+
+    .chatlist {
+  
+      height: calc(100% - 110px);
+      overflow: auto;
+    }
+
+    .chatlist .block {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+
+    }
+
+    .chatlist .block .imgbx {
+      position: relative;
+      min-width: 78px;
+      height: 78px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .chatlist .block .imgbx img {
+      min-width: 110px;
+      height: 110px;
+    }
+
+    .chatlist .block .details{
+      width: 100%;
+      font-size: 29px;
+      margin-left: 50px;
+    }
+
+    .chatlist .block .details .listHead {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .chatlist .block .details.listHead .h4 {
+      font-size: 25px;
+      font-weight: 900;
+      color: #111;
+    }
+
+    .chatlist .block .details.listHead .time {
+      font-size: 0.75em;
+      color: #aaa;
+    }
+
+    .dot {
+      position: ;
+      border-radius: 50%;
+      background-color: black;
+      margin-top: 200px;
+    }
+
+    .frame1 {
+      visibility: hidden;
+    }
+
+    .frame1 .info {
+      font-size: 18px;
+      color: white;
+      /*border-bottom: 1px solid white;*/
+      bottom: 120px;
+    }
+
+    .frame1 .info:hover {
+      background-color: #363333;
+
+    }
+
+
+    /*.frame1 .info span {
+      margin-left: -100px;
+    }*/
+
+
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: black;
+      margin-top: 4px;
+    }
+
+    .frame1 {
+      visibility: hidden;
+    }
+
+    .frame1 .info {
+      font-size: 28px;
+      color: white;
+      border-bottom: 1px solid white;
+      padding-top: 7px;
+      cursor: pointer;
+
+    }
+
+    .frame1 .info:hover {
+      background-color: #363333;
+
+    }
+
+    .frame1 .info span {
+      margin-left: 10px;
+    }
+
+    .style {
+      width: 160px;
+      height: 95px;
+      background-color: #111;
+      /*margin-top: -12px;*/
+      margin-left: -160px;
+      border-radius: 10px;
+    }
+
+    .dotted a {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="leftSide">
+      <div class="header">
+        <div class="user img">
+          <a href="profile.html"><img src="pic/user.png" class="cover"></a>
+        </div>
+        <p class="icon">IPChat</p>
+        <div class="dotted">
+          <div id="toggle" class="group-manue" onclick="fun()">
+            <ion-icon name="ellipsis-vertical" style="font-size: 50px;margin-top: 40px;"></ion-icon>
+          </div>
+          <div class="frame1" id="frame1">
+            <div class="info"><span><a href="profile.html">Profile</a></span></div>
+            <div class="info"><span><a href="setting.html">Setting</a></span></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="search_chat">
+        <div>
+          <input type="text" placeholder=" Search or Start New Chat" style="font-size: 20px;">
+          <ion-icon name="search"></ion-icon>
+        </div>
+      </div>
+      <div class="chatlist"><br>
+
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="chat.html">
+          <div class="block">
+            <div class="imgbx">
+              <img src="pic/user.png" class="cover">
+            </div>
+            <div class="details">
+              <div class="listHead">
+                <h4>name</h4>
+                <p class="time"></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <script>
+      function fun() {
+        document.getElementById("frame1").style.visibility = "visible";
+        document.getElementById("frame1").classList.add("style");
+        document.getElementById("toggle").setAttribute('onclick', 'remove()')
+      }
+      function remove() {
+        document.getElementById("frame1").classList.remove("style");
+        document.getElementById("frame1").style.visibility = "hidden"; document.getElementById("toggle").setAttribute('onclick', 'fun()')
+
+      }
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
