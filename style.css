@@ -1,0 +1,68 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: rgb(67, 63, 63);
+}
+
+.name {
+  text-align: center;
+  font-size: 170%;
+}
+
+img {
+
+  height: 50%;
+  width: 40%;
+  box-shadow: 5px 1px 20px 5px white;
+  margin-top: 50%;
+  margin-left: 0%;
+  justify-content: center;
+}
+
+.contanier {
+  justify-content: center;
+}
+
+
+
+.name::after {
+  content: "";
+  position: absolute;
+  left: 45%;
+  bottom: 47.5%;
+  height: 1px;
+  width: 0%;
+  background-color: #ee2a4b;
+  transition: all ease 1s;
+}
+
+.name:hover::after {
+  width: 18%;
+}
+
+button {
+  text-align: center;
+  front-size: 10%;
+  height: 5%;
+  width: 11%;
+  display: flex;
+  margin: 0 70%;
+  padding: 1%;
+  radius: 20%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: medium;
+  align-items: normal;
+}
+
+p {
+  text-align: center;
+  font-size: 90%;
+  margin-top: -4%;
+}
